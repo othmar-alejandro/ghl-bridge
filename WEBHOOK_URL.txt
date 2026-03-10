@@ -1,0 +1,49 @@
+# 🔗 GHL Webhook Configuration
+
+## Your Railway Webhook URL (COPY THIS):
+https://ghl-bridge-production.up.railway.app/webhook/new-lead
+
+## Health Check URL (to verify server is running):
+https://ghl-bridge-production.up.railway.app/
+
+---
+
+## How to Configure in GoHighLevel:
+
+1. Go to GHL → Settings → Integrations → Webhooks
+2. Click "Add Webhook"
+3. Configuration:
+   - Name: "OAC Audit Automation"
+   - Trigger Event: "Form Submitted" (or "Contact Created")
+   - Webhook URL: https://ghl-bridge-production.up.railway.app/webhook/new-lead
+   - Method: POST
+   - Content-Type: application/json
+
+4. Map these form fields:
+   - email
+   - first_name
+   - last_name
+   - business_name
+   - city
+   - business_type
+   - website_url
+   - has_website
+
+5. Save and test with a form submission!
+
+---
+
+## Test the Webhook Manually:
+
+curl -X POST https://ghl-bridge-production.up.railway.app/webhook/new-lead \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "test@example.com",
+    "business_name": "Test Business",
+    "first_name": "John",
+    "last_name": "Doe",
+    "city": "Miami, FL",
+    "business_type": "painting contractors",
+    "website_url": "https://example.com",
+    "has_website": "Yes"
+  }'
